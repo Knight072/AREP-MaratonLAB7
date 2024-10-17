@@ -19,12 +19,12 @@ public class App{
 
         // Buscar valor
         int searchValue = 40;
-        System.out.println("Buscando el valor " + searchValue + ": " + (bst.search(searchValue) ? "Encontrado" : "No encontrado"));
+        System.out.println("Buscando el valor " + searchValue + ": " + (bst.buscar(searchValue) ? "Encontrado" : "No encontrado"));
 
         // Eliminar nodo
         int deleteValue = 30;
         System.out.println("Eliminando el nodo " + deleteValue);
-        bst.delete(deleteValue);
+        bst.borrar(deleteValue);
 
         // Mostrar el recorrido en orden después de eliminar
         System.out.println("Recorrido en orden después de eliminar " + deleteValue + ":");

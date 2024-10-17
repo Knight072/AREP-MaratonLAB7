@@ -25,52 +25,52 @@ public class Tree<T extends Comparable<T>> implements Iterable<T> {
     }
 
     // Buscar por un valor
-    public boolean search(T value) {
-        return searchRecursive(root, value) != null;
+    public boolean buscar(T value) {
+        return buscarRecursivo(root, value) != null;
     }
 
-    private Node<T> searchRecursive(Node<T> root, T value) {
+    private Node<T> buscarRecursivo(Node<T> root, T value) {
         if (root == null || root.data.equals(value)) {
             return root;
         }
         if (value.compareTo(root.data) < 0) {
-            return searchRecursive(root.left, value);
+            return buscarRecursivo(root.left, value);
         } else {
-            return searchRecursive(root.right, value);
+            return buscarRecursivo(root.right, value);
         }
     }
 
     // Borrar nodo
-    public void delete(T value) {
-        root = deleteRecursive(root, value);
+    public void borrar(T value) {
+        root = borrarRecursivo(root, value);
     }
 
-    private Node<T> deleteRecursive(Node<T> root, T value) {
+    private Node<T> borrarRecursivo(Node<T> root, T value) {
         if (root == null) {
             return null;
         }
         if (value.compareTo(root.data) < 0) {
-            root.left = deleteRecursive(root.left, value);
+            root.left = borrarRecursivo(root.left, value);
         } else if (value.compareTo(root.data) > 0) {
-            root.right = deleteRecursive(root.right, value);
+            root.right = borrarRecursivo(root.right, value);
         } else {
-            // Node to be deleted found
+            // Nodo para borrar encontrado
 
-            // Case 1: sin hijo
+            // Caso 1: sin hijo
             if (root.left == null && root.right == null) {
                 return null;
             }
 
-            // Case 2: un hijo
+            // Caso 2: un hijo
             if (root.left == null) {
                 return root.right;
             } else if (root.right == null) {
                 return root.left;
             }
 
-            // Case 3: dos hijos
+            // Caso 3: dos hijos
             root.data = findMin(root.right);
-            root.right = deleteRecursive(root.right, root.data);
+            root.right =borrarRecursivo(root.right, root.data);
         }
         return root;
     }
